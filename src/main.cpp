@@ -36,8 +36,8 @@ int main() {
   PID pid;
   // Set the parameters for the steering PID controller
   const double K_p = 0.1;
-  const double K_i = 0.01;
-  const double K_d = 1.0;
+  const double K_i = 0.0;
+  const double K_d = 2.0;
 
   /**
    * Initialize the pid variable for the steering.
