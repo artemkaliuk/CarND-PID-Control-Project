@@ -35,8 +35,8 @@ int main() {
 
   PID pid;
   // Set the parameters for the steering PID controller
-  const double K_p = 0.2;
-  const double K_i = 0.0001;
+  const double K_p = 0.1;
+  const double K_i = 0.01;
   const double K_d = 1.0;
 
   /**
@@ -49,8 +49,8 @@ int main() {
   PID pid2;
   // define the P, I and D parameters for the throttle PID controller
   const double Kp2 = 0.1;
-  const double Ki2 = 0.0001;
-  const double Kd2 = 0.5;
+  const double Ki2 = 0.001;
+  const double Kd2 = 1.0;
   // Initialize the throttle PID controller
   pid2.Init(Kp2, Ki2, Kd2);
 
@@ -103,7 +103,7 @@ int main() {
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = throttle_value; //20. * (1. - abs(steer_value)) + 10.;//(1 - std::abs(steer_value)) * 0.06 + 0.1;
+          msgJson["throttle"] = throttle_value;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
